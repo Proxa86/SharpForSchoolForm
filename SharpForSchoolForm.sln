@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForSchoolForm", "Sharp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForSchoolForm2", "SharpForSchoolForm2\SharpForSchoolForm2.csproj", "{AC07B1B4-288B-4614-BB53-A26F3AF32116}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForSchoolForm3", "SharpForSchoolForm3\SharpForSchoolForm3.csproj", "{7341985A-8749-485A-9BED-77D4CB201B1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AC07B1B4-288B-4614-BB53-A26F3AF32116}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC07B1B4-288B-4614-BB53-A26F3AF32116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC07B1B4-288B-4614-BB53-A26F3AF32116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7341985A-8749-485A-9BED-77D4CB201B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7341985A-8749-485A-9BED-77D4CB201B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7341985A-8749-485A-9BED-77D4CB201B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7341985A-8749-485A-9BED-77D4CB201B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
