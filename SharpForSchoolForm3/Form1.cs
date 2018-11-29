@@ -71,7 +71,7 @@ namespace SharpForSchoolForm3
 
                 label1.Location = new Point(180, 70);
                 label1.Width = 400;
-                //label1.Click += new EventHandler(lable1_Click);
+                label1.Click += new EventHandler(lable1_Click);
 
                 panel1.Controls.Add(label1);
             }
@@ -83,7 +83,7 @@ namespace SharpForSchoolForm3
                 button1.Width = 120;
                 button1.Height = 40;
 
-                //button1.Click += new EventHandler(button1_Click);
+                button1.Click += new EventHandler(button1_Click);
 
                 panel1.Controls.Add(button1);
             }
@@ -93,7 +93,7 @@ namespace SharpForSchoolForm3
                 checkBox1.Text = "I OK!";
                 checkBox1.Location = new Point(20, 40);
                 checkBox1.Width = 150;
-                //checkBox1.CheckedChanged += new EventHandler(CheckBox_checkedChange);
+                checkBox1.CheckedChanged += new EventHandler(CheckBox_checkedChange);
 
                 panel1.Controls.Add(checkBox1);
 
@@ -101,7 +101,7 @@ namespace SharpForSchoolForm3
                 checkBox2.Text = "I not OK!";
                 checkBox2.Location = new Point(20, 80);
                 checkBox2.Width = 150;
-                //checkBox2.CheckedChanged += new EventHandler(CheckBox_CheckedChange);
+                checkBox2.CheckedChanged += new EventHandler(CheckBox_CheckedChange);
 
                 panel1.Controls.Add(checkBox2);
             }
@@ -112,7 +112,7 @@ namespace SharpForSchoolForm3
                 radioButton1.Location = new Point(20, 120);
                 radioButton1.Width = 150;
                 radioButton1.Height = 30;
-                //radioButton1.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
+                radioButton1.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
                 panel1.Controls.Add(radioButton1);
 
                 radioButton2 = new RadioButton();
@@ -120,7 +120,7 @@ namespace SharpForSchoolForm3
                 radioButton2.Location = new Point(20, 160);
                 radioButton2.Width = 150;
                 radioButton2.Height = 30;
-                //radioButton2.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
+                radioButton2.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
 
                 panel1.Controls.Add(radioButton2);
             }
@@ -186,31 +186,157 @@ namespace SharpForSchoolForm3
                 labelC.Size = new Size(300, 50);
                 labelC.Text = "This cool wether!";
                 tabPage2.Controls.Add(labelC);
-
-
+                
                 tabControl1.Controls.Add(tabPage2);
+
+                TabPage tabPage3 = new TabPage("Computer!");
+
+                PictureBox pictureBox3 = new PictureBox();
+                pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox3.Image = new Bitmap("C:\\Users\\user200\\Downloads\\image.gif");
+                pictureBox3.Size = new Size(300, 200);
+                tabPage3.Controls.Add(pictureBox3);
+
+                Label labelT = new Label();
+                labelT.Top = 200;
+                labelT.Size = new Size(300, 50);
+                labelT.Text = "This is warm wether!";
+                tabPage3.Controls.Add(labelT);
+
+                tabControl1.Controls.Add(tabPage3);
                 panel1.Controls.Add(tabControl1);
             }
             else if (e.Node.Text == "DataGridView")
             {
+                DataSet dataSet1 = new DataSet("Example DataSet");
+                dataSet1.ReadXml("C:\\Users\\user200\\Downloads\\marks.xml");
 
+                DataGridView dataGridView1= new DataGridView();
+                dataGridView1.Width = 250;
+                dataGridView1.Height = 150;
+                dataGridView1.Location = new Point(20, 500);
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.DataSource = dataSet1;
+                dataGridView1.DataMember = "authors";
+                panel1.Controls.Add(dataGridView1);
             }
             else if (e.Node.Text == "MainMenu")
             {
+                MainMenu mainMenu1 = new MainMenu();
+                MenuItem menuItem1 = new MenuItem("File");
+                menuItem1.MenuItems.Add("Exit", new EventHandler(mainMenu1_Exit_Select));
+                mainMenu1.MenuItems.Add(menuItem1);
 
+                MenuItem menuItem2 = new MenuItem("Background");
+                menuItem2.MenuItems.Add("Choose", new EventHandler(mainMenu1_ColorOwn_Select));
+                menuItem2.MenuItems.Add("White", new EventHandler(mainMenu1_ColorWhite_Select));
+                mainMenu1.MenuItems.Add(menuItem2);
+
+                this.Menu = mainMenu1;
+
+                MessageBox.Show("Main menu add in window. Try it");
             }
             else if (e.Node.Text == "ToolBar")
             {
+                ToolBar toolBar1 = new ToolBar();
+                toolBar1.Size = new Size(100, 100);
+                toolBar1.Dock = DockStyle.Right;
+                ImageList imageList1 = new ImageList();
+                imageList1.Images.Add(new Bitmap("C:\\Users\\user200\\Downloads\\folderdocument.png"));
+                imageList1.Images.Add(new Bitmap("C:\\Users\\user200\\Downloads\\documents.png"));
+                imageList1.Images.Add(new Bitmap("C:\\Users\\user200\\Downloads\\256.png"));
+                imageList1.Images.Add(new Bitmap("C:\\Users\\user200\\Downloads\\folder.png"));
+                toolBar1.ImageList = imageList1;
 
+                ToolBarButton toolBarButton1 = new ToolBarButton("New");
+                toolBarButton1.ImageIndex = 0;
+                toolBar1.Buttons.Add(toolBarButton1);
+
+                ToolBarButton toolBarButton2 = new ToolBarButton("Open");
+                toolBarButton2.ImageIndex = 1;
+                toolBar1.Buttons.Add(toolBarButton2);
+
+                ToolBarButton toolBarButton3 = new ToolBarButton("Copy");
+                toolBarButton3.ImageIndex = 2;
+                toolBar1.Buttons.Add(toolBarButton3);
+
+                ToolBarButton toolBarButton4 = new ToolBarButton("Exit");
+                toolBarButton4.ImageIndex = 3;
+                toolBar1.Buttons.Add(toolBarButton4);
+
+                toolBar1.ButtonClick += new ToolBarButtonClickEventHandler(toolBar1_Click);
+
+                panel1.Controls.Add(toolBar1);
             }
             else if (e.Node.Text == "PictureBox")
             {
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Image = new Bitmap("C:\\Users\\user200\\Downloads\\folder.png");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+                pictureBox1.Location = new Point(500, 250);
+                pictureBox1.Size = new Size(250, 200);
 
+                panel1.Controls.Add(pictureBox1);
             }
             else if (e.Node.Text == "RichTextBox")
             {
+                RichTextBox richTextBox1 = new RichTextBox();
+                richTextBox1.LoadFile("C:\\Users\\user200\\Downloads\\marks.xml", RichTextBoxStreamType.PlainText);
+                richTextBox1.WordWrap = false;
+                richTextBox1.BorderStyle = BorderStyle.Fixed3D;
+                richTextBox1.BackColor = Color.Beige;
+                richTextBox1.Size = new Size(250, 150);
+                richTextBox1.Location = new Point(300, 500);
+
+                panel1.Controls.Add(richTextBox1);
 
             }
+        }
+
+        private void toolBar1_Click(object sender, ToolBarButtonClickEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void mainMenu1_ColorWhite_Select(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void mainMenu1_ColorOwn_Select(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void mainMenu1_Exit_Select(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RadioButton_CheckedChange(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CheckBox_CheckedChange(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CheckBox_checkedChange(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You put button :)");
+        }
+
+        private void lable1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Yes, label have events on click.");
         }
     }
 }
