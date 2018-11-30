@@ -101,7 +101,7 @@ namespace SharpForSchoolForm3
                 checkBox2.Text = "I not OK!";
                 checkBox2.Location = new Point(20, 80);
                 checkBox2.Width = 150;
-                checkBox2.CheckedChanged += new EventHandler(CheckBox_CheckedChange);
+                checkBox2.CheckedChanged += new EventHandler(CheckBox_checkedChange);
 
                 panel1.Controls.Add(checkBox2);
             }
@@ -134,7 +134,7 @@ namespace SharpForSchoolForm3
                 listBox1.Items.Add("Blue");
                 listBox1.Items.Add("Gray");
 
-                //listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChange);
+                listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChange);
 
                 panel1.Controls.Add(listBox1);
             }
@@ -293,40 +293,77 @@ namespace SharpForSchoolForm3
 
             }
         }
+       
 
         private void toolBar1_Click(object sender, ToolBarButtonClickEventArgs e)
         {
-            throw new NotImplementedException();
+            if(e.Button.Text == "Open")
+            {
+                MessageBox.Show("Here open new file");
+            }
+            else if(e.Button.Text == "New")
+            {
+                MessageBox.Show("Here create new file");
+            }
+            else if(e.Button.Text == "Copy")
+            {
+                MessageBox.Show("Here copy file");
+            }
         }
 
         private void mainMenu1_ColorWhite_Select(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            treeView1.BackColor = Color.White;
         }
 
         private void mainMenu1_ColorOwn_Select(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ColorDialog colorDialog1 = new ColorDialog();
+            colorDialog1.Color = treeView1.BackColor;
+            colorDialog1.ShowDialog();
+            treeView1.BackColor = colorDialog1.Color;
         }
 
         private void mainMenu1_Exit_Select(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (MessageBox.Show("You want end work?", "Exit confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                this.Dispose();
+        }
+
+        private void listBox1_SelectedIndexChange(object sender, EventArgs e)
+        {
+            switch(listBox1.SelectedItem.ToString())
+            {
+                case "Green": treeView1.BackColor = Color.Green;
+                    break;
+                case "Yellow": treeView1.BackColor = Color.Yellow;
+                    break;
+                case "Blue": treeView1.BackColor = Color.Blue;
+                    break;
+                case "Gray": treeView1.BackColor = Color.Gray;
+                    break;
+            }
         }
 
         private void RadioButton_CheckedChange(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void CheckBox_CheckedChange(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            if (radioButton1.Checked)
+                MessageBox.Show("You choose radioButton1");
+            else if (radioButton2.Checked)
+                MessageBox.Show("You choose radioButton2");
         }
 
         private void CheckBox_checkedChange(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (checkBox1.Checked && checkBox2.Checked)
+            {
+                MessageBox.Show("Good luck");
+            }
+            else if (checkBox1.Checked)
+            {
+                MessageBox.Show("You choose checkBox1");
+            }
+            else MessageBox.Show("You choose checkBox2");
         }
 
         private void button1_Click(object sender, EventArgs e)
